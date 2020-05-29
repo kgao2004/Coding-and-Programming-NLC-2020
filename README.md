@@ -15,7 +15,7 @@ User Guide: located under the help section of the website and attached to this r
 
 To log in to the admin site as an administrator (full access):
 - Username: karengao
-- Password: kg123456
+- Password: kg12345678
 
 To log in to the admin site as a viewer (only view certain aspects of the admin site):
 - Username: viewer_01
