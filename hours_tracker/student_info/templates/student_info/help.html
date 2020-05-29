@@ -1,0 +1,63 @@
+<!-- Help page
+ This page contains the user guide for the site.
+ -->
+
+{% extends 'student_info/base.html' %}
+
+<!-- Load static files -->
+{% load static %}
+
+{% block content %}
+    <!-- Heading -->
+    <div class="p-3 mb-2 bg-info text-white"><h1 class="text-center">User Guide</h1></div>
+
+    <br>
+
+    <!-- Admin Page -->
+    <div class="card card-body">
+        <h2>Admin Page</h2>
+        <span>In order to edit the database, you must log in to your account at "127.0.0.1:8000/admin". You can
+            get to this page by clicking the "Login" button on the navigation bar.</span>
+        <br>
+        <div class="text-center"><img src="{% static 'images/log_in.png' %}" style="height:30%; width:30%;"></div>
+        <br>
+        <h5>Users & Groups</h5>
+        <span>There are two types of groups that the users can fall into: Administrator and Viewer</span>
+        <ul>
+            <li>Administrator: full access (can edit and view everything)</li>
+            <li>Viewer: read-only (can view groups, users, and student information) </li>
+        </ul>
+        <h5>Student Information</h5>
+        <span>Once you log in, you will be able to edit users and student information. Each time you add
+            a student, the date of creation and the award category (calculated based on hours) will be
+            automatically generated and stored in the database.\nYou can also sort and filter student data.</span>
+        <br>
+        <div class="text-center"><img src="{% static 'images/student_info.png' %}" style="height:80%; width:80%;"></div>
+        <br>
+        <h5>Recent actions</h5>
+        <span>Under "Recent actions", you can view your history (only administrators can see this).</span>
+        <br>
+        <div class="text-center"><img src="{% static 'images/recent_actions.png' %}" style="height:20%; width:20%;"></div>
+    </div>
+
+    <br>
+    <!-- Home Page -->
+    <div class="card card-body">
+        <h2>Home Page</h2>
+        <span>You can access the home page at "127.0.0.1:8000". On the home page, you can see the total
+            chapter hours, the number of students under each award program category (bronze, silver, gold),
+            and the student information. You can filter the student information by name, student number, grade,
+            hours, and award category.</span>
+        <br>
+        <h5>Monthly Report</h5>
+        <span>To view a pdf of the monthly report, select a month and year and then click "View Monthly Report".
+            In the report, you will be able to see the total chapter hours, number of students in each award
+            category, and the student information for the selected month.</span>
+        <br>
+        <div class="text-center"><img src="{% static 'images/report.png' %}" style="height:80%; width:80%;"></div>
+        <br>
+        <br>
+        <div class="text-center"><img src="{% static 'images/pdf.png' %}" style="height:80%; width:80%;"></div>
+    </div>
+    <br>
+{% endblock %}

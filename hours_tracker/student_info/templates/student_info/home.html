@@ -1,0 +1,69 @@
+<!-- Home page
+This is the main page where you can see the total chapter hours, award program categories, and student information
+ -->
+
+{% extends 'student_info/base.html' %}
+
+{% block content %}
+
+<br>
+
+<!-- Total chapter hours -->
+<div class="p-3 mb-2 bg-info text-white"><h3 class="text-center">Total Chapter Hours: {{total_chap_hours}}</h3></div>
+
+<br>
+
+<!-- Includes the html code for displaying the Award Program Categories info -->
+{% include 'student_info/categories.html' %}
+
+<hr>
+
+<!-- Form for filtering the student info -->
+<div class="card card-body">
+    <form class="text-center" method="get">
+        {{student_filter.form}}
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+</div>
+
+<hr>
+
+<!-- Monthly report (select date and view pdf) -->
+<div class="text-center">
+    <form action="report" method="POST">
+        {% csrf_token %}
+        <input type="month" name="selected_date">
+        <input type="submit" value="View Monthly Report">
+    </form>
+</div>
+
+<br>
+
+<!-- Student info table -->
+<div class="container-fluid">
+    <div class="card card-body">
+        <h2 class="text-center">STUDENT INFORMATION</h2>
+        <table class="table table-sm">
+            <tr>
+                <th>Name</th>
+                <th>Student Number</th>
+                <th>Grade</th>
+                <th>Hours</th>
+                <th>Category</th>
+            </tr>
+
+            {% for student in student_filter.qs %}
+                <tr>
+                    <td>{{student.name}}</td>
+                    <td>{{student.number}}</td>
+                    <td>{{student.grade}}</td>
+                    <td>{{student.hours}}</td>
+                    <td>{{student.category}}</td>
+                </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+</div>
+
+{% endblock %}

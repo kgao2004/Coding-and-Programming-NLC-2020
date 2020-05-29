@@ -1,0 +1,73 @@
+<!-- PDF Monthly Report
+A pdf for the monthly report will be generated based on the html code in this file
+ -->
+
+<head>
+<style>
+    @page {
+        size: a4 portrait;
+        @frame header_frame {           /* Static Frame */
+            -pdf-frame-content: header_content;
+            left: 50pt; width: 512pt; top: 50pt; height: 40pt;
+        }
+        @frame content_frame {          /* Content Frame */
+            left: 50pt; width: 512pt; top: 90pt; height: 632pt;
+        }
+        @frame footer_frame {           /* Another static Frame */
+            -pdf-frame-content: footer_content;
+            left: 50pt; width: 512pt; top: 772pt; height: 20pt;
+        }
+    }
+</style>
+</head>
+
+<body>
+    <!-- Content for Static Frame 'header_frame' -->
+    <div id="header_content">
+    	<h1 style="text-align:center"><strong>Community Service Hours Program -
+			Monthly Report ({{month}} {{year}})</strong></h1>
+    </div>
+
+    <!-- Content for Static Frame 'footer_frame' -->
+    <div id="footer_content">Page <pdf:pagenumber>
+        of <pdf:pagecount>
+    </div>
+
+    <!-- HTML Content -->
+
+	<!-- Total chapter hours -->
+	<h2 style="text-align:center">Total Chapter Hours: {{total_chap_hours}}</h2>
+
+	<hr>
+
+	<!-- Award Categories info -->
+	<h2 style="text-align:center">Award Categories</h2>
+	<p style="text-align:center">Bronze: {{total_bronze}} | Silver: {{total_silver}} | Gold: {{total_gold}}</p>
+
+	<hr>
+	<br>
+
+	<!-- Student information table -->
+    <h2 style="text-align:center">Student Information</h2>
+	<hr>
+	<table>
+    	<tr>
+    		<th style="text-align:left">Name</th>
+    		<th style="text-align:left">Student Number</th>
+    		<th style="text-align:left">Grade</th>
+    		<th style="text-align:left">Hours</th>
+			<th style="text-align:left">Category</th>
+    	</tr>
+		{% for student in students %}
+			<tr>
+				<td>{{student.name}}</td>
+				<td>{{student.number}}</td>
+				<td>{{student.grade}}</td>
+				<td>{{student.hours}}</td>
+				<td>{{student.category}}</td>
+			</tr>
+		{% endfor %}
+    </table>
+    <hr>
+</body>
+</html>

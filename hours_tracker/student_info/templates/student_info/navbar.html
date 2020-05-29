@@ -1,0 +1,23 @@
+<!-- Navigation bar
+Included on the base template
+-->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <!-- Text link to home page -->
+  <a class="navbar-brand" href="{% url 'home' %}">COMMUNITY SERVICE AWARDS PROGRAM</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <!-- Link to help page -->
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'help' %}">Help</a>
+      </li>
+    </ul>
+  </div>
+  <!-- Login button - link to admin page -->
+  <form class="form-inline">
+    <a class="btn btn-outline-success" type="button" href="http://127.0.0.1:8000/admin/">Login</a>
+  </form>
+</nav>
